@@ -431,6 +431,13 @@ spec:
   selector:
     name: payment
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: queue-master-sa
+---
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -447,6 +454,7 @@ spec:
       labels:
         name: queue-master
     spec:
+      serviceAccountName: queue-master-sa
       containers:
       - name: queue-master
         image: weaveworksdemos/queue-master:0.3.1
@@ -512,6 +520,14 @@ spec:
   selector:
     name: rabbitmq
 ---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: shipping-sa
+---
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -528,6 +544,7 @@ spec:
       labels:
         name: shipping
     spec:
+      serviceAccountName: shipping-sa
       containers:
       - name: shipping
         image: weaveworksdemos/shipping:0.4.8
