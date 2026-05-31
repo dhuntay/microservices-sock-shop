@@ -162,6 +162,14 @@ spec:
     targetPort: 3306
   selector:
     name: catalogue-db
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: catalogue-sa
+
+      
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -179,6 +187,7 @@ spec:
       labels:
         name: catalogue
     spec:
+      serviceAccountName: catalogue-sa
       containers:
       - name: catalogue
         image: mosuke5/sockshop-catalogue:a04de03
