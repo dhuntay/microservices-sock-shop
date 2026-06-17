@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: soch-sho-dev-infra
+  identifier: sochshodevinfra
+  orgIdentifier: default
+  projectIdentifier: OKD415
+  environmentRef: sockshopdev
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: okd514devconnector
+    namespace: sock-shop-dev
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
