@@ -4,5 +4,20 @@ service:
   orgIdentifier: default
   projectIdentifier: OKD415
   serviceDefinition:
-    spec: {}
+    spec:
+      manifests:
+        - manifest:
+            identifier: completedemoyaml
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: sockshopdevgitconnector
+                  gitFetchType: Branch
+                  paths:
+                    - https://github.com/dhuntay/microservices-sock-shop/blob/master/complete-demo.yaml
+                  branch: master
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
     type: Kubernetes
