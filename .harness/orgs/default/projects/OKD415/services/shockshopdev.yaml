@@ -3,3 +3,6 @@ service:
   identifier: shockshopdev
   orgIdentifier: default
   projectIdentifier: OKD415
+  serviceDefinition:
+    spec: {}
+    type: Kubernetes
