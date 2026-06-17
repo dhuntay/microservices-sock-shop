@@ -1,0 +1,5 @@
+service:
+  name: shock-shop-dev
+  identifier: shockshopdev
+  orgIdentifier: default
+  projectIdentifier: OKD415
