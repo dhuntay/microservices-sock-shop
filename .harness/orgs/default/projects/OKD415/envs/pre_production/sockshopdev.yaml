@@ -1,0 +1,8 @@
+environment:
+  name: sock-shop-dev
+  identifier: sockshopdev
+  description: ""
+  tags: {}
+  type: PreProduction
+  orgIdentifier: default
+  projectIdentifier: OKD415
