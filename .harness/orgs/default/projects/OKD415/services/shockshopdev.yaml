@@ -16,7 +16,7 @@ service:
                   connectorRef: sockshopdevgitconnector
                   gitFetchType: Branch
                   paths:
-                    - https://github.com/dhuntay/microservices-sock-shop/blob/master/complete-demo.yaml
+                    - complete-demo.yaml
                   branch: master
               skipResourceVersioning: false
               enableDeclarativeRollback: false
