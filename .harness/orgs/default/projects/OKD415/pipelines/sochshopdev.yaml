@@ -6,6 +6,38 @@ pipeline:
   tags: {}
   stages:
     - stage:
+        name: SonarQube Code Analysis
+        identifier: SonarQube_Code_Analysis
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: okd514devconnector
+              namespace: sock-shop-dev
+              serviceAccountName: harness-vault-sa
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run SonarQube Scan
+                  identifier: Run_SonarQube_Scan
+                  spec:
+                    connectorRef: Docker_registry
+                    image: sonarsource/sonar-scanner-cli:latest
+                    shell: Sh
+                    command: echo "SonarQube build step configured"
+    - stage:
         name: sock-shop-dev-app
         identifier: sockshopdevapp
         description: ""
@@ -95,3 +127,8 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+  properties:
+    ci:
+      codebase:
+        connectorRef: sockshopdevgitconnector
+        build: <+input>
