@@ -75,6 +75,9 @@ pipeline:
 
                       echo "Starting SonarQube analysis from: $(pwd)"
 
+                      export SONAR_USER_HOME=/tmp/.sonar
+                      mkdir -p "$SONAR_USER_HOME"
+
                       sonar-scanner \
                         -Dsonar.projectKey=sock-shop-dev \
                         -Dsonar.projectName=sock-shop-dev \
